@@ -4,150 +4,173 @@
   <meta charset="UTF-8">
   <title>Timekeeping Form</title> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Flatpickr CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
 <style>
-*{
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
-	font-family: 'poppins', sans-serif;
-	font-size: 18px;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
 }
-body{
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: #001f2f;
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f7fa;
 }
-.container{
-	width: 500px;
-	padding: 30px;
-	border: 1px solid #eeeeee;
-	border-radius: 10px;
-	background-color: #003b5b;
+
+.container {
+  width: 400px;
+  padding: 40px 30px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4ae4c0, #2fc8a7);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
-h4{
-	margin-bottom: 10px;
-	font-size: 24px;
-	color: white;
+
+h4 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-align: center;
+  color: #ffffff;
 }
-input{
-	width: 100%;
-	padding: 10px;
-	margin-bottom: 10px;
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: #333;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+input::placeholder {
+  color: #888;
+}
+
+textarea {
+  border-radius: 6px;
+}
+
+#submit {
+  border: none;
+  background-color: #003b5b;
   color: white;
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 6px;
+  padding: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
-textarea{
-	width: 100%;
-	padding: 10px;
+
+#submit:hover {
+  background-color: #001f2f;
 }
-#submit{
-	border: none;
-	background-color: orangered;
-	color: white;
-	width: 200px;
-	margin-top: 10px;
-	border-radius: 5px;
-}
-#submit:hover{
-	background-color: #333333;
-}
+
 .form-group {
   position: relative;
   margin-bottom: 1.5rem;
 }
+
 .form-group input {
   width: 100%;
-  padding: 10px 10px 10px 5px;
+  padding: 12px 10px 12px 10px;
   font-size: 16px;
   border: none;
-  border-bottom: 1px solid #ccc;
-  background: transparent;
-  color: white;
+  background: #ffffff;
+  border-radius: 6px;
+  color: #333;
 }
+
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px #003b5b inset !important;
-  -webkit-text-fill-color: white !important;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  -webkit-text-fill-color: #333 !important;
   transition: background-color 9999s ease-out, color 9999s ease-out;
 }
+
 .form-group label {
   position: absolute;
-  top: 10px;
-  left: 5px;
-  color: white;
-  font-size: 16px;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #003b5b;
+  font-size: 14px;
   pointer-events: none;
   transition: 0.2s ease all;
 }
+
 .form-group input:focus ~ label,
 .form-group input:not(:placeholder-shown) ~ label {
-  top: -10px;
+  top: -8px;
+  left: 10px;
   font-size: 12px;
-  color: white;
+  color: #003b5b;
+  background-color: #ffffff;
+  padding: 0 4px;
+  border-radius: 4px;
 }
+
 input:focus {
   outline: none;
-  border-color: white;
+  border: 2px solid #003b5b;
+}
+
+/* Logo placeholder space */
+.logo {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.logo img {
+  height: 60px;
 }
 </style>
-</head>
+	<div class="login-card">
+    <div class="logo">
+      <!-- Replace this with your logo -->
+      <img src="sanphil-logo.png" alt="Logo" />
+    </div>
 
-<body>
 <div class="container">
-  <form method="post" action="" name="time-keeper">
-    <h4>TimeKeeper</h4>
+    <form method="post" action="" name="time-keeper">
+      <h4>TimeKeeper</h4>
 
-    <div class="form-group">
-      <input type="text" name="employee-name" placeholder=" " required>
-      <label>Employee Name</label>
-    </div>
+      <div class="form-group">
+        <input type="text" name="employee-name" placeholder=" " required>
+        <label>Employee Name</label>
+      </div>
 
-    <div class="form-group">
-      <input type="date" name="date" placeholder=" " required>
-      <label>Date</label>
-    </div>
+      <div class="form-group">
+        <input type="date" name="date" placeholder=" " required>
+        <label>Date</label>
+      </div>
 
-    <!-- Changed type="time" to type="text" for Flatpickr -->
-    <div class="form-group">
-      <input type="text" name="clock-in" id="clock-in" placeholder=" " required>
-      <label>Clock In</label>
-    </div>
+      <div class="form-group">
+        <input type="time" name="clock-in" placeholder=" " required>
+        <label>Clock In</label>
+      </div>
 
-    <div class="form-group">
-      <input type="text" name="clock-out" id="clock-out" placeholder=" " required>
-      <label>Clock Out</label>
-    </div>
+      <div class="form-group">
+        <input type="time" name="clock-out" placeholder=" " required>
+        <label>Clock Out</label>
+      </div>
 
-    <input type="submit" value="Submit" id="submit">
-  </form>
-</div>
-
-<!-- Flatpickr JS -->
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
+      <input type="submit" value="Submit" id="submit">
+    </form>
+  </div>
+	<!-- Move script block here, before closing body -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbybBFE1_857NIznHgoU8NBOAGNgWjnVIFlL2wF8N9vg5uEFQWW-vUrUFYVGIysXl8EW/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxcMFRzWnYrKlPR81chhvv-xT0xSjmJqoTX82RFk5j37KLcdc0G2hyygSMVpUf9UHng/exec';
     const form = document.forms['time-keeper'];
-
-    // Flatpickr time picker init (12-hour format)
-    flatpickr("#clock-in", {
-      enableTime: true,
-      noCalendar: true,
-      dateFormat: "h:i K", // 12-hour format
-      time_24hr: false
-    });
-
-    flatpickr("#clock-out", {
-      enableTime: true,
-      noCalendar: true,
-      dateFormat: "h:i K",
-      time_24hr: false
-    });
 
     form.addEventListener('submit', e => {
       e.preventDefault();
