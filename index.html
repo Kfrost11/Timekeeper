@@ -87,21 +87,7 @@ textarea{
       border-color: white;
     }
 </style>
-<script>
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxcMFRzWnYrKlPR81chhvv-xT0xSjmJqoTX82RFk5j37KLcdc0G2hyygSMVpUf9UHng/exec'
 
-const form = document.forms['time-keeper']
-
-form.addEventListener('submit', e => {
-  
-  e.preventDefault()
-  
-  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-  .then(response => alert("Thank you! Form is submitted" ))
-  .then(() => { window.location.reload(); })
-  .catch(error => console.error('Error!', error.message))
-})
-</script>
 <div class="container">
     <form method="post" action="" name="time-keeper">
       <h4>TimeKeeper</h4>
@@ -129,5 +115,23 @@ form.addEventListener('submit', e => {
       <input type="submit" value="Submit" id="submit">
     </form>
   </div>
+	<!-- Move script block here, before closing body -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxcMFRzWnYrKlPR81chhvv-xT0xSjmJqoTX82RFk5j37KLcdc0G2hyygSMVpUf9UHng/exec';
+    const form = document.forms['time-keeper'];
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+          alert("Thank you! Form is submitted");
+          window.location.reload();
+        })
+        .catch(error => console.error('Error!', error.message));
+    });
+  });
+</script>
+
 </body>
 </html>
