@@ -34,6 +34,7 @@ input{
 	width: 100%;
 	padding: 10px;
 	margin-bottom: 10px;
+  color: white;
 }
 textarea{
 	width: 100%;
@@ -50,6 +51,41 @@ textarea{
 #submit:hover{
 	background-color: #333333;
 }
+  .form-group {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px 10px 10px 5px;
+      font-size: 16px;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      background: transparent;
+    }
+
+    .form-group label {
+      position: absolute;
+      top: 10px;
+      left: 5px;
+      color: white;
+      font-size: 16px;
+      pointer-events: none;
+      transition: 0.2s ease all;
+    }
+
+    .form-group input:focus ~ label,
+    .form-group input:not(:placeholder-shown) ~ label {
+      top: -10px;
+      font-size: 12px;
+      color: white;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: white;
+    }
 </style>
 <script>
 const scriptURL = 'https://script.google.com/macros/s/AKfycbxcMFRzWnYrKlPR81chhvv-xT0xSjmJqoTX82RFk5j37KLcdc0G2hyygSMVpUf9UHng/exec'
@@ -66,16 +102,32 @@ form.addEventListener('submit', e => {
   .catch(error => console.error('Error!', error.message))
 })
 </script>
-<body>
-  <div class="container">
-    <form method="post" action="https://script.google.com/macros/s/AKfycbxcMFRzWnYrKlPR81chhvv-xT0xSjmJqoTX82RFk5j37KLcdc0G2hyygSMVpUf9UHng/exec" name="time-keeper">
+<div class="container">
+    <form method="post" action="" name="time-keeper">
       <h4>TimeKeeper</h4>
-      <input type="text" name="employee-name" placeholder="Employee Name">
-      <input type="date" name="date" placeholder="Date">
-      <input type="time" name="clock-in" placeholder="Clock In:">
-      <input type="time" name="clock-out" placeholder="Clock Out:">
+
+      <div class="form-group">
+        <input type="text" name="employee-name" placeholder=" " required>
+        <label>Employee Name</label>
+      </div>
+
+      <div class="form-group">
+        <input type="date" name="date" placeholder=" " required>
+        <label>Date</label>
+      </div>
+
+      <div class="form-group">
+        <input type="time" name="clock-in" placeholder=" " required>
+        <label>Clock In</label>
+      </div>
+
+      <div class="form-group">
+        <input type="time" name="clock-out" placeholder=" " required>
+        <label>Clock Out</label>
+      </div>
+
       <input type="submit" value="Submit" id="submit">
-		</form>
-	</div>
+    </form>
+  </div>
 </body>
 </html>
