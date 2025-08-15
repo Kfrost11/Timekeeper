@@ -23,6 +23,7 @@ body {
 
 .container {
   width: 400px;
+  max-width: 90%;
   padding: 40px 30px;
   border-radius: 12px;
   background: linear-gradient(135deg, #4ae4c0, #2fc8a7);
@@ -37,24 +38,57 @@ h4 {
   color: #ffffff;
 }
 
-input,
-textarea {
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.form-group input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  color: #333;
-  background-color: #ffffff;
-  border: none;
-  border-radius: 6px;
+  padding: 12px 10px;
   font-size: 16px;
-}
-
-input::placeholder {
-  color: #888;
-}
-
-textarea {
+  border: none;
+  background: #ffffff;
   border-radius: 6px;
+  color: #333;
+  height: 44px; /* uniform height */
+  box-sizing: border-box;
+  -webkit-appearance: none; /* remove native styling on mobile */
+  appearance: none;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  -webkit-text-fill-color: #333 !important;
+  transition: background-color 9999s ease-out, color 9999s ease-out;
+}
+
+.form-group label {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #003b5b;
+  font-size: 14px;
+  pointer-events: none;
+  transition: 0.2s ease all;
+  background-color: transparent;
+}
+
+.form-group input:focus ~ label,
+.form-group input:not(:placeholder-shown) ~ label {
+  top: -8px;
+  left: 10px;
+  font-size: 12px;
+  color: #003b5b;
+  background-color: #ffffff;
+  padding: 0 4px;
+  border-radius: 4px;
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid #003b5b;
 }
 
 #submit {
@@ -74,54 +108,6 @@ textarea {
   background-color: #001f2f;
 }
 
-.form-group {
-  position: relative;
-  margin-bottom: 1.5rem;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 12px 10px 12px 10px;
-  font-size: 16px;
-  border: none;
-  background: #ffffff;
-  border-radius: 6px;
-  color: #333;
-}
-
-input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
-  -webkit-text-fill-color: #333 !important;
-  transition: background-color 9999s ease-out, color 9999s ease-out;
-}
-
-.form-group label {
-  position: absolute;
-  top: 50%;
-  left: 12px;
-  transform: translateY(-50%);
-  color: #003b5b;
-  font-size: 14px;
-  pointer-events: none;
-  transition: 0.2s ease all;
-}
-
-.form-group input:focus ~ label,
-.form-group input:not(:placeholder-shown) ~ label {
-  top: -8px;
-  left: 10px;
-  font-size: 12px;
-  color: #003b5b;
-  background-color: #ffffff;
-  padding: 0 4px;
-  border-radius: 4px;
-}
-
-input:focus {
-  outline: none;
-  border: 2px solid #003b5b;
-}
-
 /* Logo placeholder space */
 .logo {
   width: 100%;
@@ -133,65 +119,68 @@ input:focus {
   height: 60px;
 }
 </style>
-	<div class="login-card">
-    <div class="logo">
-      <!-- Replace this with your logo -->
-      <img src="sanphil-logo.png" alt="Logo" />
-    </div>
+</head>
+<body>
 
-<div class="container">
-  <form method="post" action="" name="time-keeper">
-    <h4>TimeKeeper</h4>
+<div class="login-card">
+  <div class="logo">
+    <!-- Replace this with your logo -->
+    <img src="sanphil-logo.png" alt="Logo" />
+  </div>
 
-    <div class="form-group">
-      <input type="text" name="employee-name" placeholder=" " required>
-      <label>Employee Name</label>
-    </div>
+  <div class="container">
+    <form method="post" action="" name="time-keeper">
+      <h4>TimeKeeper</h4>
 
-    <div class="form-group">
-      <input type="date" name="date" placeholder=" " required>
-      <label>Date</label>
-    </div>
+      <div class="form-group">
+        <input type="text" name="employee-name" placeholder=" " required>
+        <label>Employee Name</label>
+      </div>
 
-    <div class="form-group">
-      <input type="time" name="clock-in" placeholder=" " required>
-      <label>Clock In</label>
-    </div>
+      <div class="form-group">
+        <input type="date" name="date" placeholder=" " required>
+        <label>Date</label>
+      </div>
 
-    <div class="form-group">
-      <input type="time" name="clock-out" placeholder=" " required>
-      <label>Clock Out</label>
-    </div>
+      <div class="form-group">
+        <input type="time" name="clock-in" placeholder=" " required>
+        <label>Clock In</label>
+      </div>
 
-    <div class="form-group">
-      <input type="text" name="location" placeholder=" " required>
-      <label>Location</label>
-    </div>
+      <div class="form-group">
+        <input type="time" name="clock-out" placeholder=" " required>
+        <label>Clock Out</label>
+      </div>
 
-    <input type="submit" value="Submit" id="submit">
-  </form>
+      <div class="form-group">
+        <input type="text" name="location" placeholder=" " required>
+        <label>Location</label>
+      </div>
+
+      <input type="submit" value="Submit" id="submit">
+    </form>
+  </div>
 </div>
 
-	<!-- Move script block here, before closing body -->
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwoJ6krKKsZovCr0mO-zquQyUPA1Gze7JHvhowPXdNZB83xsqM2eUSkeU_5GVrcMZ0/exec';
-    const form = document.forms['time-keeper'];
+document.addEventListener('DOMContentLoaded', () => {
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwoJ6krKKsZovCr0mO-zquQyUPA1Gze7JHvhowPXdNZB83xsqM2eUSkeU_5GVrcMZ0/exec';
+  const form = document.forms['time-keeper'];
 
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-    	  const submitButton = document.getElementById('submit');
-      submitButton.disabled = true;
-      submitButton.value = 'Submitting...';
-    	
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => {
-          alert("🕒Your clock-in/out has been logged. Have a great day!");
-          window.location.reload();
-        })
-        .catch(error => console.error('Error!', error.message));
-    });
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const submitButton = document.getElementById('submit');
+    submitButton.disabled = true;
+    submitButton.value = 'Submitting...';
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+        alert("🕒 Your clock-in/out has been logged. Have a great day!");
+        window.location.reload();
+      })
+      .catch(error => console.error('Error!', error.message));
   });
+});
 </script>
 
 </body>
