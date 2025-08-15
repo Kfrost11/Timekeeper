@@ -140,34 +140,38 @@ input:focus {
     </div>
 
 <div class="container">
-    <form method="post" action="" name="time-keeper">
-      <h4>TimeKeeper</h4>
+  <form method="post" action="" name="time-keeper">
+    <h4>TimeKeeper</h4>
 
-      <div class="form-group">
-        <input type="text" name="employee-name" placeholder="Employee Name" required>
-      </div>
-		
-      <div class="form-group">
-        <input type="date" name="date" placeholder="Date" required>
-		  <label>Date</label>
-      </div>
+    <div class="form-group">
+      <input type="text" name="employee-name" placeholder=" " required>
+      <label>Employee Name</label>
+    </div>
 
-      <div class="form-group">
-        <input type="time" name="clock-in" placeholder="Clock In" required>
-		<label>CLock In</label>
-      </div>
+    <div class="form-group">
+      <input type="date" name="date" placeholder=" " required>
+      <label>Date</label>
+    </div>
 
-      <div class="form-group">
-        <input type="time" name="clock-out" placeholder="Clock Out" required>
-		  <label>CLock Out</label>
-		  <div class="form-group">
-        <input type="text" name="Location" placeholder="Location " required>
-      </div>
-      </div>
+    <div class="form-group">
+      <input type="time" name="clock-in" placeholder=" " required>
+      <label>Clock In</label>
+    </div>
 
-      <input type="submit" value="Submit" id="submit">
-    </form>
-  </div>
+    <div class="form-group">
+      <input type="time" name="clock-out" placeholder=" " required>
+      <label>Clock Out</label>
+    </div>
+
+    <div class="form-group">
+      <input type="text" name="location" placeholder=" " required>
+      <label>Location</label>
+    </div>
+
+    <input type="submit" value="Submit" id="submit">
+  </form>
+</div>
+
 	<!-- Move script block here, before closing body -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
